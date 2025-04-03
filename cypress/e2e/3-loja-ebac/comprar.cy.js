@@ -20,13 +20,5 @@ describe('funcionalidade: comprar item do carrinho', () => {
           .click()
           cy.get('.wc-proceed-to-checkout')
           .click()
-
-
-
-
-
-    
-    });
-
-    
+    });  
 });
