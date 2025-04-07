@@ -40,13 +40,20 @@ describe('funcionalidade: login',() => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, daniel2014.teste (não é daniel2014.teste? Sair)')                     
     });
 
-    it.only('deve fazer login com sucesso - usando fixture', () => {
+    it('deve fazer login com sucesso - usando fixture', () => {
         cy.fixture('perfil').then(dados=>{
         cy.get('#username').type(dados.usuario ,{log: false})
         cy.get('#password').type(dados.senha ,{log: false})
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, daniel2014.teste (não é daniel2014.teste? Sair)')                          
-        })
-                       
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, daniel2014.teste (não é daniel2014.teste? Sair)')                                  })                      
     });
+
+    it('deve fazer login com sucesso com comandos customizados ', () => {
+        cy.login('Daniel2014.teste@gmail.com', 'Teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, daniel2014.teste (não é daniel2014.teste? Sair)')          
+   
+    });
+
+
+
 })

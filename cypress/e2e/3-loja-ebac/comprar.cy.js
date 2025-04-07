@@ -3,7 +3,7 @@
 describe('funcionalidade: comprar item do carrinho', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('produtos')
     });
 
     it('deve selecionar um item da lista', () => {
