@@ -1,0 +1,20 @@
+[
+   {
+    "nomeProduto": "Abominable Hoodie",
+    "tamanho": "L",
+    "cor": "Green",
+    "quantidade": 3
+   },
+   {
+    "nomeProduto": "Circe Hooded Ice Fleece",
+    "tamanho": "M",
+    "cor": "Gray",
+    "quantidade": 2
+   },
+   {
+    "nomeProduto": "Ingrid Running Jacket",
+    "tamanho": "XL",
+    "cor": "White",
+    "quantidade": 5
+   }
+]

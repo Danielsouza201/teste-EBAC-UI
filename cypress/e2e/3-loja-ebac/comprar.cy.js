@@ -1,24 +1,15 @@
 ///<reference types="cypress"/>
+import produtosPage from "../../support/page-objects/produtos.page";
 
 describe('funcionalidade: comprar item do carrinho', () => {
 
     beforeEach(() => {
-        cy.visit('produtos')
+       produtosPage.visitarUrl()
     });
 
-    it('deve selecionar um item da lista', () => {
-        cy.get('#content')
-          .contains('Abominable Hoodie')
-          .click()
-          cy.get('.button-variable-item-M')
-          .click()
-          cy.get('.button-variable-item-Green')
-          .click()
-          cy.get('.single_add_to_cart_button')
-          .click()
-          cy.get('.woocommerce-message > .button')
-          .click()
-          cy.get('.wc-proceed-to-checkout')
-          .click()
+    it.only('deve selecionar um item da lista', () => {
+        produtosPage.visitarProdutos('Circe Hooded Ice Fleece')
+        produtosPage.addProdutosCarrinho('M', 'Green', 5)      
+        cy.get('.woocommerce-message').should('contain', 'foram adicionados no seu carrinho.')
     });  
 });
