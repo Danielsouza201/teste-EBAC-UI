@@ -27,17 +27,17 @@ describe('funcionalidade - produtos', () => {
         let qtd = 5
         produtosPage.buscarProdutos('Abominable Hoodie')
         produtosPage.addProdutosCarrinho('M', 'Green', qtd)
-        cy.get('.woocommerce-message').should('contain', 'foram adicionados no seu carrinho.')
+        cy.get('.woocommerce-message').should('contain', qtd + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
     });
 
     it.only('deve adicionar um produto ao carrinho buscando da massa de dados', () => {
         cy.fixture('produtos').then(dados => {
-            produtosPage.buscarProdutos(dados[0].nomeProduto)
+            produtosPage.buscarProdutos(dados[2].nomeProduto)
             produtosPage.addProdutosCarrinho(
-                dados[0].tamanho, 
-                dados[0].cor, 
-                dados[0].quantidade)    
-            cy.get('.woocommerce-message').should('contain', dados[0].nomeProduto )
+                dados[2].tamanho, 
+                dados[2].cor, 
+                dados[2].quantidade)    
+            cy.get('.woocommerce-message').should('contain', dados[2].nomeProduto)
         })
         
 });
