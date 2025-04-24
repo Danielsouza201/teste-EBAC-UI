@@ -35,8 +35,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       dados[0].cor,
       dados[0].quantidade)
       cy.get('.woocommerce-message').should('contain', dados[0].nomeProduto)
-    });
-    
+    });  
   });
 
   it('adicionar produto ao carrinho', () => {
@@ -51,11 +50,6 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
   });
 
   it.only('deve preencher os dados de checkout e concluir a compra ', () => {
-    const cep=faker.location.zipCode();
-    const telefone=faker.phone.number();
-    console.log(cep);
-    console.log(telefone);
-
     produtosPage.pesquisarProduto('Teton Pullover Hoodie')
     produtosPage.adicionarProdutoaoCarrinhoParametros('L', 'Black', 1)
     cy.get('.woocommerce-message > .button').click()
@@ -71,8 +65,5 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     cy.get('#place_order').click()
     cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
   });
-
-
-
 
 })
