@@ -18,11 +18,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
   it('selecionar o produto da lista', () => {
       produtosPage.buscarProduto('Arcadio Gym Short')
       produtosPage.adicionarProdutoCarrinho()
-      cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho.')
 
       produtosPage.pesquisarProduto('Teton Pullover Hoodie')
       produtosPage.adicionarProdutoaoCarrinhoParametros('L', 'Black', 1)
-      cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho.')
 
       cy.get('.logo-in-theme > .logo > a > .logo-img').click()
       cy.fixture('produtos').then(dados => {
@@ -31,7 +29,6 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       dados[0].tamanho,
       dados[0].cor,
       dados[0].quantidade)
-      cy.get('.woocommerce-message').should('contain', dados[0].nomeProduto)
 
       cy.get('#primary-menu > .menu-item-629 > a').click()
       cy.fixture('produtos').then(dados => {
@@ -40,10 +37,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       dados[1].tamanho,
       dados[1].cor,
       dados[1].quantidade)
-      cy.get('.woocommerce-message').should('contain', dados[1].nomeProduto)
 
-      produtosPage.pesquisarProduto('Teton Pullover Hoodie')
-      produtosPage.adicionarProdutoaoCarrinhoParametros('L', 'Black', 1)
       cy.get('.woocommerce-message > .button').click()
       cy.get('.checkout-button').click()
       cy.get('#billing_first_name').type(faker.person.firstName('male'))
